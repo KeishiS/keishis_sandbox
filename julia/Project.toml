@@ -1,0 +1,9 @@
+name = "keishis_sandbox"
+uuid = "192a40ad-bc78-4c7e-9408-6335cfd01449"
+authors = ["KeishiS <sando.keishi.sp@alumni.tsukuba.ac.jp>"]
+version = "0.1.0"
+
+[deps]
+ArtifactUtils = "8b73e784-e7d8-4ea5-973d-377fed4e3bce"
+Artifacts = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
+Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
