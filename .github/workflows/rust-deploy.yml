@@ -2,7 +2,7 @@ name: Rust Deploy
 on:
     push:
         tags:
-            - "rust-v*"
+            - "rs-v*"
     pull_request:
     workflow_dispatch:
 
