@@ -77,7 +77,7 @@ jobs:
             - name: Cargo Build
               run: cargo build --release --target ${{ matrix.platform.target }} --target-dir target --no-default-features --features julia
             - name: Rename dll file
-              run: cd target\${{ matrix.platform.target }}\release && ren test_keishis.${{ matrix.platform.dlext }}  lib${{ env.PKG_NAME }}.${{ matrix.platform.dlext }}
+              run: cd target\${{ matrix.platform.target }}\release && ren ${{ env.PKG_NAME }}.${{ matrix.platform.dlext }}  lib${{ env.PKG_NAME }}.${{ matrix.platform.dlext }}
             - name: Archive Build
               run: cd target\${{ matrix.platform.target }}\release && tar -zcvf target-${{ matrix.platform.os }}-${{ matrix.platform.arch }}.tar.gz lib${{ env.PKG_NAME }}.${{ matrix.platform.dlext }}
             - name: Upload Cargo Target
