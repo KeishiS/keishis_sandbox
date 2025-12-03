@@ -9,6 +9,9 @@ on:
 permissions:
     contents: read
 
+env:
+    PKG_NAME: keishis_sandbox
+
 jobs:
     linux-macos:
         name: Build for Linux and macOS
@@ -43,7 +46,7 @@ jobs:
             - name: Cargo Build
               run: cargo build --release --target ${{ matrix.platform.target }} --target-dir target --no-default-features --features julia
             - name: Archive Build
-              run: cd target/${{ matrix.platform.target }}/release && tar -zcvf target-${{ matrix.platform.os }}-${{ matrix.platform.arch }}.tar.gz libtest_keishis.${{ matrix.platform.dlext }}
+              run: cd target/${{ matrix.platform.target }}/release && tar -zcvf target-${{ matrix.platform.os }}-${{ matrix.platform.arch }}.tar.gz lib${{ env.PKG_NAME }}.${{ matrix.platform.dlext }}
             - name: Upload Cargo Target
               uses: actions/upload-artifact@v4
               with:
@@ -74,9 +77,9 @@ jobs:
             - name: Cargo Build
               run: cargo build --release --target ${{ matrix.platform.target }} --target-dir target --no-default-features --features julia
             - name: Rename dll file
-              run: cd target\${{ matrix.platform.target }}\release && ren test_keishis.${{ matrix.platform.dlext }}  libtest_keishis.${{ matrix.platform.dlext }}
+              run: cd target\${{ matrix.platform.target }}\release && ren test_keishis.${{ matrix.platform.dlext }}  lib${{ env.PKG_NAME }}.${{ matrix.platform.dlext }}
             - name: Archive Build
-              run: cd target\${{ matrix.platform.target }}\release && tar -zcvf target-${{ matrix.platform.os }}-${{ matrix.platform.arch }}.tar.gz libtest_keishis.${{ matrix.platform.dlext }}
+              run: cd target\${{ matrix.platform.target }}\release && tar -zcvf target-${{ matrix.platform.os }}-${{ matrix.platform.arch }}.tar.gz lib${{ env.PKG_NAME }}.${{ matrix.platform.dlext }}
             - name: Upload Cargo Target
               uses: actions/upload-artifact@v4
               with:
